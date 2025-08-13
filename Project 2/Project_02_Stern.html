@@ -1,0 +1,347 @@
+<html>
+<head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.11/codemirror.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/katex.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/4.24.7/antd.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div style="margin:30px 30px 0 0"><div style="margin-bottom:15px"><b>Kernel:</b> <!-- -->Python 3 (system-wide)</div><div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px"></div><div style="width:100%"><h1 id="dsci-303---project-02"><span>DSCI 303 - Project 02</span></h1><h3 id="mallory-stern"><span>Mallory Stern</span></h3></div></div><div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px"></div><div style="width:100%"><h1 id="introduction"><span>Introduction</span></h1><p><span style="text-indent:0"><span>This project will be utilizing the gapminder dataset, which contains socioeconomic data for 184 countries between the years 1800 to 2018.</span></span></p></div></div><div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><span style="margin-left:0" class="hidden-xs"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px">In [<!-- -->1<!-- -->]:</div></span><div style="overflow:hidden;flex:1"><div style="width:100%;border-radius:5px;position:relative;overflow-x:hidden;border:1px solid rgb(207, 207, 207)"><pre class="CodeMirror cm-s-default  CodeMirror-wrap" style="width:100%;overflow-x:auto;line-height:normal;height:auto;font-size:inherit;margin-bottom:0;padding:10px;white-space:pre-wrap;word-wrap:break-word;word-break:normal;border:0;background:white"><div style="margin-left:0"><span class="cm-keyword">import</span><span> </span><span class="cm-variable">pandas</span><span> </span><span class="cm-keyword">as</span><span> </span><span class="cm-variable">pd</span><span>
+</span><span class="cm-variable">df</span><span> </span><span>=</span><span> </span><span class="cm-variable">pd</span><span>.</span><span class="cm-variable">read_csv</span><span>(</span><span class="cm-string">&#x27;gapminder_data.txt&#x27;</span><span>,</span><span> </span><span class="cm-variable">sep</span><span>=</span><span class="cm-string">&#x27;\t&#x27;</span><span>)</span><span>
+</span><span class="cm-variable">df</span><span>.</span><span class="cm-variable">head</span><span>(</span><span class="cm-number">10</span><span>)</span><span>
+</span></div></pre></div></div></div><div style="display:flex;flex-direction:row;align-items:stretch" cocalc-test="cell-output"><button type="button" class="ant-btn css-dev-only-do-not-override-byeoj0 ant-btn-text" style="border-color:transparent;font-size:inherit;padding:0;display:flex;flex-direction:column;height:auto;cursor:pointer"><span style="margin-left:0" class="hidden-xs"><div style="color:#D84315;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;padding-bottom:2px">Out[<!-- -->1<!-- -->]:</div></span><div style="flex:1"></div><span> </span></button><div style="flex:1;overflow-x:auto;line-height:normal;background-color:#fff;border:0;margin-bottom:0;margin-left:1px" class="cocalc-jupyter-rendered"><div style="margin:5px 0"><div><div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align:right">
+      <th></th>
+      <th>country</th>
+      <th>year</th>
+      <th>continent</th>
+      <th>population</th>
+      <th>life_exp</th>
+      <th>gdp_per_cap</th>
+      <th>gini</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Afghanistan</td>
+      <td>1800</td>
+      <td>asia</td>
+      <td>3280000</td>
+      <td>28.2</td>
+      <td>603</td>
+      <td>30.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Albania</td>
+      <td>1800</td>
+      <td>europe</td>
+      <td>410000</td>
+      <td>35.4</td>
+      <td>667</td>
+      <td>38.9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Algeria</td>
+      <td>1800</td>
+      <td>africa</td>
+      <td>2500000</td>
+      <td>28.8</td>
+      <td>715</td>
+      <td>56.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Angola</td>
+      <td>1800</td>
+      <td>africa</td>
+      <td>1570000</td>
+      <td>27.0</td>
+      <td>618</td>
+      <td>57.2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Antigua and Barbuda</td>
+      <td>1800</td>
+      <td>americas</td>
+      <td>37000</td>
+      <td>33.5</td>
+      <td>757</td>
+      <td>40.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Argentina</td>
+      <td>1800</td>
+      <td>americas</td>
+      <td>534000</td>
+      <td>33.2</td>
+      <td>1510</td>
+      <td>47.7</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Armenia</td>
+      <td>1800</td>
+      <td>europe</td>
+      <td>413000</td>
+      <td>34.0</td>
+      <td>514</td>
+      <td>31.5</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Australia</td>
+      <td>1800</td>
+      <td>asia</td>
+      <td>351000</td>
+      <td>34.0</td>
+      <td>814</td>
+      <td>38.7</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Austria</td>
+      <td>1800</td>
+      <td>europe</td>
+      <td>3210000</td>
+      <td>34.4</td>
+      <td>1850</td>
+      <td>33.4</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Azerbaijan</td>
+      <td>1800</td>
+      <td>europe</td>
+      <td>880000</td>
+      <td>29.2</td>
+      <td>775</td>
+      <td>70.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div></div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><span style="margin-left:0" class="hidden-xs"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px">In [<!-- -->2<!-- -->]:</div></span><div style="overflow:hidden;flex:1"><div style="width:100%;border-radius:5px;position:relative;overflow-x:hidden;border:1px solid rgb(207, 207, 207)"><pre class="CodeMirror cm-s-default  CodeMirror-wrap" style="width:100%;overflow-x:auto;line-height:normal;height:auto;font-size:inherit;margin-bottom:0;padding:10px;white-space:pre-wrap;word-wrap:break-word;word-break:normal;border:0;background:white"><div style="margin-left:0"><span class="cm-variable">country</span><span> </span><span>=</span><span> </span><span class="cm-variable">df</span><span>.</span><span class="cm-variable">country</span><span>.</span><span class="cm-variable">to_list</span><span>(</span><span>)</span><span>
+</span><span class="cm-variable">continent</span><span> </span><span>=</span><span> </span><span class="cm-variable">df</span><span>.</span><span class="cm-variable">continent</span><span>.</span><span class="cm-variable">to_list</span><span>(</span><span>)</span><span>
+</span><span class="cm-variable">year</span><span> </span><span>=</span><span> </span><span class="cm-variable">df</span><span>.</span><span class="cm-variable">year</span><span>.</span><span class="cm-variable">to_list</span><span>(</span><span>)</span><span>
+</span><span class="cm-variable">population</span><span> </span><span>=</span><span> </span><span class="cm-variable">df</span><span>.</span><span class="cm-variable">population</span><span>.</span><span class="cm-variable">to_list</span><span>(</span><span>)</span><span>
+</span><span class="cm-variable">life_exp</span><span> </span><span>=</span><span> </span><span class="cm-variable">df</span><span>.</span><span class="cm-variable">life_exp</span><span>.</span><span class="cm-variable">to_list</span><span>(</span><span>)</span><span>
+</span><span class="cm-variable">pcgdp</span><span> </span><span>=</span><span> </span><span class="cm-variable">df</span><span>.</span><span class="cm-variable">gdp_per_cap</span><span>.</span><span class="cm-variable">to_list</span><span>(</span><span>)</span><span>
+</span><span class="cm-variable">gini</span><span> </span><span>=</span><span> </span><span class="cm-variable">df</span><span>.</span><span class="cm-variable">gini</span><span>.</span><span class="cm-variable">to_list</span><span>(</span><span>)</span><span>
+</span></div></pre></div></div></div><div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><span style="margin-left:0" class="hidden-xs"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px">In [<!-- -->3<!-- -->]:</div></span><div style="overflow:hidden;flex:1"><div style="width:100%;border-radius:5px;position:relative;overflow-x:hidden;border:1px solid rgb(207, 207, 207)"><pre class="CodeMirror cm-s-default  CodeMirror-wrap" style="width:100%;overflow-x:auto;line-height:normal;height:auto;font-size:inherit;margin-bottom:0;padding:10px;white-space:pre-wrap;word-wrap:break-word;word-break:normal;border:0;background:white"><div style="margin-left:0"><span class="cm-variable">N</span><span> </span><span>=</span><span> </span><span class="cm-number">1</span><span>
+</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-string">&#x27;Country: &#x27;</span><span>,</span><span> </span><span class="cm-variable">country</span><span>[</span><span class="cm-variable">N</span><span>]</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-string">&#x27;Continent: &#x27;</span><span>,</span><span> </span><span class="cm-variable">continent</span><span>[</span><span class="cm-variable">N</span><span>]</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-string">&#x27;Year: &#x27;</span><span>,</span><span> </span><span class="cm-variable">year</span><span>[</span><span class="cm-variable">N</span><span>]</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-string">&#x27;Population: &#x27;</span><span>,</span><span> </span><span class="cm-variable">population</span><span>[</span><span class="cm-variable">N</span><span>]</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-string">&#x27;Life Expectancy: &#x27;</span><span>,</span><span> </span><span class="cm-variable">life_exp</span><span>[</span><span class="cm-variable">N</span><span>]</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-string">&#x27;Per Capita GDP: &#x27;</span><span>,</span><span> </span><span class="cm-variable">pcgdp</span><span>[</span><span class="cm-variable">N</span><span>]</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-string">&#x27;Gini Index: &#x27;</span><span>,</span><span> </span><span class="cm-variable">gini</span><span>[</span><span class="cm-variable">N</span><span>]</span><span>)</span><span>
+</span></div></pre></div></div></div><div style="display:flex;flex-direction:row;align-items:stretch" cocalc-test="cell-output"><button type="button" class="ant-btn css-dev-only-do-not-override-byeoj0 ant-btn-text" style="border-color:transparent;font-size:inherit;padding:0;display:flex;flex-direction:column;height:auto;cursor:pointer"><span style="margin-left:0" class="hidden-xs"><div style="color:#D84315;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;padding-bottom:2px">Out[<!-- -->3<!-- -->]:</div></span><div style="flex:1"></div><span> </span></button><div style="flex:1;overflow-x:auto;line-height:normal;background-color:#fff;border:0;margin-bottom:0;margin-left:1px" class="cocalc-jupyter-rendered"><div style="white-space:pre-wrap;word-wrap:break-word;font-family:monospace;padding-top:5px;padding-bottom:5px"><span>Country:  Albania
+Continent:  europe
+Year:  1800
+Population:  410000
+Life Expectancy:  35.4
+Per Capita GDP:  667
+Gini Index:  38.9
+</span></div></div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px"></div><div style="width:100%"><h1 id="part-1-displaying-past-20-years-of-us-data"><span>Part 1: Displaying Past 20 Years of US Data</span></h1><p><span style="text-indent:0"><span>The last 20 years of recorded data for the United States will be displayed.</span></span></p></div></div><div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><span style="margin-left:0" class="hidden-xs"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px">In [<!-- -->4<!-- -->]:</div></span><div style="overflow:hidden;flex:1"><div style="width:100%;border-radius:5px;position:relative;overflow-x:hidden;border:1px solid rgb(207, 207, 207)"><pre class="CodeMirror cm-s-default  CodeMirror-wrap" style="width:100%;overflow-x:auto;line-height:normal;height:auto;font-size:inherit;margin-bottom:0;padding:10px;white-space:pre-wrap;word-wrap:break-word;word-break:normal;border:0;background:white"><div style="margin-left:0"><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;Year    Country          Population   LExp    pcGDP    Gini&#x27;</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;-----------------------------------------------------------&#x27;</span><span>)</span><span>
+</span><span>
+</span><span class="cm-keyword">for</span><span> </span><span class="cm-variable">i</span><span> </span><span class="cm-keyword">in</span><span> </span><span class="cm-builtin">range</span><span>(</span><span class="cm-builtin">len</span><span>(</span><span class="cm-variable">country</span><span>)</span><span>)</span><span>:</span><span>
+</span><span>    </span><span class="cm-keyword">if</span><span> </span><span class="cm-variable">year</span><span>[</span><span class="cm-variable">i</span><span>]</span><span> </span><span class="cm-operator">&gt;=</span><span> </span><span class="cm-number">1999</span><span>:</span><span>
+</span><span>        </span><span class="cm-keyword">if</span><span> </span><span class="cm-variable">country</span><span>[</span><span class="cm-variable">i</span><span>]</span><span> </span><span class="cm-operator">==</span><span> </span><span class="cm-string">&#x27;United States&#x27;</span><span>:</span><span>
+</span><span>            </span><span class="cm-builtin">print</span><span> </span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;{year[i]}    {country[i]}    {population[i]}    {life_exp[i]}    {pcgdp[i]}    {gini[i]}&#x27;</span><span>)</span><span>
+</span><span>
+</span></div></pre></div></div></div><div style="display:flex;flex-direction:row;align-items:stretch" cocalc-test="cell-output"><button type="button" class="ant-btn css-dev-only-do-not-override-byeoj0 ant-btn-text" style="border-color:transparent;font-size:inherit;padding:0;display:flex;flex-direction:column;height:auto;cursor:pointer"><span style="margin-left:0" class="hidden-xs"><div style="color:#D84315;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;padding-bottom:2px">Out[<!-- -->4<!-- -->]:</div></span><div style="flex:1"></div><span> </span></button><div style="flex:1;overflow-x:auto;line-height:normal;background-color:#fff;border:0;margin-bottom:0;margin-left:1px" class="cocalc-jupyter-rendered"><div style="white-space:pre-wrap;word-wrap:break-word;font-family:monospace;padding-top:5px;padding-bottom:5px"><span>Year    Country          Population   LExp    pcGDP    Gini
+-----------------------------------------------------------
+1999    United States    279000000    76.8    44700    40.5
+2000    United States    282000000    76.9    46000    40.5
+2001    United States    285000000    77.0    46000    40.5
+2002    United States    288000000    77.1    46400    40.5
+2003    United States    290000000    77.3    47300    40.5
+2004    United States    293000000    77.5    48600    40.6
+2005    United States    295000000    77.7    49800    40.7
+2006    United States    298000000    77.9    50600    40.8
+2007    United States    301000000    78.1    51000    40.8
+2008    United States    303000000    78.3    50400    40.8
+2009    United States    306000000    78.6    48600    40.7
+2010    United States    309000000    78.7    49400    40.7
+2011    United States    311000000    78.8    49800    40.7
+2012    United States    313000000    78.9    50500    40.8
+2013    United States    316000000    78.9    51000    41.0
+2014    United States    318000000    78.9    51800    41.2
+2015    United States    320000000    78.8    52800    41.3
+2016    United States    322000000    78.8    53300    41.4
+2017    United States    324000000    79.0    54200    41.5
+2018    United States    327000000    79.1    54900    41.5
+</span></div></div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px"></div><div style="width:100%"><h1 id="part-2-selecting-the-2018-data"><span>Part 2: Selecting the 2018 Data</span></h1><p><span style="text-indent:0"><span>The following will create 6 new lists, which will contain only the 2018 data for all of the 184 countries. </span></span></p></div></div><div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><span style="margin-left:0" class="hidden-xs"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px">In [<!-- -->5<!-- -->]:</div></span><div style="overflow:hidden;flex:1"><div style="width:100%;border-radius:5px;position:relative;overflow-x:hidden;border:1px solid rgb(207, 207, 207)"><pre class="CodeMirror cm-s-default  CodeMirror-wrap" style="width:100%;overflow-x:auto;line-height:normal;height:auto;font-size:inherit;margin-bottom:0;padding:10px;white-space:pre-wrap;word-wrap:break-word;word-break:normal;border:0;background:white"><div style="margin-left:0"><span class="cm-variable">country_2018</span><span> </span><span>=</span><span> </span><span>[</span><span>]</span><span>
+</span><span class="cm-variable">population_2018</span><span> </span><span>=</span><span> </span><span>[</span><span>]</span><span>
+</span><span class="cm-variable">continent_2018</span><span> </span><span>=</span><span> </span><span>[</span><span>]</span><span>
+</span><span class="cm-variable">life_exp_2018</span><span> </span><span>=</span><span> </span><span>[</span><span>]</span><span>
+</span><span class="cm-variable">pcgdp_2018</span><span> </span><span>=</span><span> </span><span>[</span><span>]</span><span>
+</span><span class="cm-variable">gini_2018</span><span> </span><span>=</span><span> </span><span>[</span><span>]</span><span>
+</span></div></pre></div></div></div><div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><span style="margin-left:0" class="hidden-xs"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px">In [<!-- -->6<!-- -->]:</div></span><div style="overflow:hidden;flex:1"><div style="width:100%;border-radius:5px;position:relative;overflow-x:hidden;border:1px solid rgb(207, 207, 207)"><pre class="CodeMirror cm-s-default  CodeMirror-wrap" style="width:100%;overflow-x:auto;line-height:normal;height:auto;font-size:inherit;margin-bottom:0;padding:10px;white-space:pre-wrap;word-wrap:break-word;word-break:normal;border:0;background:white"><div style="margin-left:0"><span class="cm-keyword">for</span><span> </span><span class="cm-variable">j</span><span> </span><span class="cm-keyword">in</span><span> </span><span class="cm-builtin">range</span><span>(</span><span class="cm-builtin">len</span><span>(</span><span class="cm-variable">country</span><span>)</span><span>)</span><span>:</span><span>
+</span><span>    </span><span class="cm-keyword">if</span><span> </span><span class="cm-variable">year</span><span>[</span><span class="cm-variable">j</span><span>]</span><span> </span><span class="cm-operator">==</span><span> </span><span class="cm-number">2018</span><span>:</span><span>
+</span><span>        </span><span class="cm-variable">country_2018</span><span>.</span><span class="cm-variable">append</span><span>(</span><span class="cm-variable">country</span><span>[</span><span class="cm-variable">j</span><span>]</span><span>)</span><span>
+</span><span>        </span><span class="cm-variable">population_2018</span><span>.</span><span class="cm-variable">append</span><span>(</span><span class="cm-variable">population</span><span>[</span><span class="cm-variable">j</span><span>]</span><span>)</span><span>
+</span><span>        </span><span class="cm-variable">continent_2018</span><span>.</span><span class="cm-variable">append</span><span>(</span><span class="cm-variable">continent</span><span>[</span><span class="cm-variable">j</span><span>]</span><span>)</span><span>
+</span><span>        </span><span class="cm-variable">life_exp_2018</span><span>.</span><span class="cm-variable">append</span><span>(</span><span class="cm-variable">life_exp</span><span>[</span><span class="cm-variable">j</span><span>]</span><span>)</span><span>
+</span><span>        </span><span class="cm-variable">pcgdp_2018</span><span>.</span><span class="cm-variable">append</span><span>(</span><span class="cm-variable">pcgdp</span><span>[</span><span class="cm-variable">j</span><span>]</span><span>)</span><span>
+</span><span>        </span><span class="cm-variable">gini_2018</span><span>.</span><span class="cm-variable">append</span><span>(</span><span class="cm-variable">gini</span><span>[</span><span class="cm-variable">j</span><span>]</span><span>)</span><span>
+</span></div></pre></div></div></div><div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><span style="margin-left:0" class="hidden-xs"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px">In [<!-- -->7<!-- -->]:</div></span><div style="overflow:hidden;flex:1"><div style="width:100%;border-radius:5px;position:relative;overflow-x:hidden;border:1px solid rgb(207, 207, 207)"><pre class="CodeMirror cm-s-default  CodeMirror-wrap" style="width:100%;overflow-x:auto;line-height:normal;height:auto;font-size:inherit;margin-bottom:0;padding:10px;white-space:pre-wrap;word-wrap:break-word;word-break:normal;border:0;background:white"><div style="margin-left:0"><span class="cm-variable">global_population_2018</span><span> </span><span>=</span><span> </span><span class="cm-builtin">sum</span><span>(</span><span class="cm-variable">population_2018</span><span>)</span><span>
+</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;The global population in 2018 was {global_population_2018}.&#x27;</span><span>)</span><span>
+</span></div></pre></div></div></div><div style="display:flex;flex-direction:row;align-items:stretch" cocalc-test="cell-output"><button type="button" class="ant-btn css-dev-only-do-not-override-byeoj0 ant-btn-text" style="border-color:transparent;font-size:inherit;padding:0;display:flex;flex-direction:column;height:auto;cursor:pointer"><span style="margin-left:0" class="hidden-xs"><div style="color:#D84315;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;padding-bottom:2px">Out[<!-- -->7<!-- -->]:</div></span><div style="flex:1"></div><span> </span></button><div style="flex:1;overflow-x:auto;line-height:normal;background-color:#fff;border:0;margin-bottom:0;margin-left:1px" class="cocalc-jupyter-rendered"><div style="white-space:pre-wrap;word-wrap:break-word;font-family:monospace;padding-top:5px;padding-bottom:5px"><span>The global population in 2018 was 7595200200.
+</span></div></div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px"></div><div style="width:100%"><h1 id="part-3-identifying-countries-with-largest-and-smallest-populations"><span>Part 3: Identifying Countries with Largest and Smallest Populations</span></h1><p><span style="text-indent:0"><span>Two lists will be created with one containing countries with the largest populations and the other containing the smallest.</span></span></p></div></div><div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><span style="margin-left:0" class="hidden-xs"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px">In [<!-- -->9<!-- -->]:</div></span><div style="overflow:hidden;flex:1"><div style="width:100%;border-radius:5px;position:relative;overflow-x:hidden;border:1px solid rgb(207, 207, 207)"><pre class="CodeMirror cm-s-default  CodeMirror-wrap" style="width:100%;overflow-x:auto;line-height:normal;height:auto;font-size:inherit;margin-bottom:0;padding:10px;white-space:pre-wrap;word-wrap:break-word;word-break:normal;border:0;background:white"><div style="margin-left:0"><span class="cm-variable">sorted_population_2018</span><span> </span><span>=</span><span> </span><span class="cm-builtin">sorted</span><span>(</span><span class="cm-variable">population_2018</span><span>,</span><span> </span><span class="cm-variable">reverse</span><span> </span><span>=</span><span> </span><span class="cm-keyword">True</span><span>)</span><span>
+</span><span class="cm-variable">tenth_pop</span><span> </span><span>=</span><span> </span><span class="cm-variable">sorted_population_2018</span><span>[</span><span class="cm-number">9</span><span>]</span><span>
+</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;Countries with Largest Populations in 2018&#x27;</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;------------------------------------------------------&#x27;</span><span>)</span><span>
+</span><span>
+</span><span class="cm-keyword">for</span><span> </span><span class="cm-variable">j</span><span> </span><span class="cm-keyword">in</span><span> </span><span class="cm-builtin">range</span><span>(</span><span class="cm-builtin">len</span><span>(</span><span class="cm-variable">country_2018</span><span>)</span><span>)</span><span>:</span><span>
+</span><span>    </span><span class="cm-keyword">if</span><span> </span><span class="cm-variable">population_2018</span><span>[</span><span class="cm-variable">j</span><span>]</span><span> </span><span class="cm-operator">&gt;=</span><span> </span><span class="cm-variable">tenth_pop</span><span>:</span><span>
+</span><span>        </span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;The population of {country_2018[j]} in 2018 was {population_2018[j]}.&#x27;</span><span>)</span><span>
+</span><span>        </span><span>
+</span></div></pre></div></div></div><div style="display:flex;flex-direction:row;align-items:stretch" cocalc-test="cell-output"><button type="button" class="ant-btn css-dev-only-do-not-override-byeoj0 ant-btn-text" style="border-color:transparent;font-size:inherit;padding:0;display:flex;flex-direction:column;height:auto;cursor:pointer"><span style="margin-left:0" class="hidden-xs"><div style="color:#D84315;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;padding-bottom:2px">Out[<!-- -->9<!-- -->]:</div></span><div style="flex:1"></div><span> </span></button><div style="flex:1;overflow-x:auto;line-height:normal;background-color:#fff;border:0;margin-bottom:0;margin-left:1px" class="cocalc-jupyter-rendered"><div style="white-space:pre-wrap;word-wrap:break-word;font-family:monospace;padding-top:5px;padding-bottom:5px"><span>Countries with Largest Populations in 2018
+------------------------------------------------------
+The population of Bangladesh in 2018 was 166000000.
+The population of Brazil in 2018 was 211000000.
+The population of China in 2018 was 1420000000.
+The population of India in 2018 was 1350000000.
+The population of Indonesia in 2018 was 267000000.
+The population of Mexico in 2018 was 131000000.
+The population of Nigeria in 2018 was 196000000.
+The population of Pakistan in 2018 was 201000000.
+The population of Russia in 2018 was 144000000.
+The population of United States in 2018 was 327000000.
+</span></div></div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><span style="margin-left:0" class="hidden-xs"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px">In [<!-- -->10<!-- -->]:</div></span><div style="overflow:hidden;flex:1"><div style="width:100%;border-radius:5px;position:relative;overflow-x:hidden;border:1px solid rgb(207, 207, 207)"><pre class="CodeMirror cm-s-default  CodeMirror-wrap" style="width:100%;overflow-x:auto;line-height:normal;height:auto;font-size:inherit;margin-bottom:0;padding:10px;white-space:pre-wrap;word-wrap:break-word;word-break:normal;border:0;background:white"><div style="margin-left:0"><span class="cm-variable">tenth_low</span><span> </span><span>=</span><span> </span><span class="cm-variable">sorted_population_2018</span><span>[</span><span class="cm-operator">-</span><span class="cm-number">10</span><span>]</span><span>
+</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;Countries with the Smallest Populations in 2018&#x27;</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;------------------------------------------------------&#x27;</span><span>)</span><span>
+</span><span>
+</span><span class="cm-keyword">for</span><span> </span><span class="cm-variable">j</span><span> </span><span class="cm-keyword">in</span><span> </span><span class="cm-builtin">range</span><span>(</span><span class="cm-builtin">len</span><span>(</span><span class="cm-variable">country_2018</span><span>)</span><span>)</span><span>:</span><span>
+</span><span>    </span><span class="cm-keyword">if</span><span> </span><span class="cm-variable">population_2018</span><span>[</span><span class="cm-variable">j</span><span>]</span><span> </span><span class="cm-operator">&lt;=</span><span> </span><span class="cm-variable">tenth_low</span><span>:</span><span>
+</span><span>        </span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;The population of {country_2018[j]} in 2018 was {population_2018[j]}.&#x27;</span><span>)</span><span>
+</span></div></pre></div></div></div><div style="display:flex;flex-direction:row;align-items:stretch" cocalc-test="cell-output"><button type="button" class="ant-btn css-dev-only-do-not-override-byeoj0 ant-btn-text" style="border-color:transparent;font-size:inherit;padding:0;display:flex;flex-direction:column;height:auto;cursor:pointer"><span style="margin-left:0" class="hidden-xs"><div style="color:#D84315;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;padding-bottom:2px">Out[<!-- -->10<!-- -->]:</div></span><div style="flex:1"></div><span> </span></button><div style="flex:1;overflow-x:auto;line-height:normal;background-color:#fff;border:0;margin-bottom:0;margin-left:1px" class="cocalc-jupyter-rendered"><div style="white-space:pre-wrap;word-wrap:break-word;font-family:monospace;padding-top:5px;padding-bottom:5px"><span>Countries with the Smallest Populations in 2018
+------------------------------------------------------
+The population of Antigua and Barbuda in 2018 was 103000.
+The population of Grenada in 2018 was 108000.
+The population of Kiribati in 2018 was 118000.
+The population of Micronesia, Fed. Sts. in 2018 was 106000.
+The population of Samoa in 2018 was 198000.
+The population of Sao Tome and Principe in 2018 was 209000.
+The population of Seychelles in 2018 was 95200.
+The population of St. Lucia in 2018 was 180000.
+The population of St. Vincent and the Grenadines in 2018 was 110000.
+The population of Tonga in 2018 was 109000.
+</span></div></div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px"></div><div style="width:100%"><h1 id="part-4-identifying-countries-with-highest-and-lowest-life-expectancies"><span>Part 4: Identifying Countries with Highest and Lowest Life Expectancies</span></h1><p><span style="text-indent:0"><span>The following chart will display a list of countries with both the highest and lowest life expectancies in 2018.</span></span></p></div></div><div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><span style="margin-left:0" class="hidden-xs"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px">In [<!-- -->22<!-- -->]:</div></span><div style="overflow:hidden;flex:1"><div style="width:100%;border-radius:5px;position:relative;overflow-x:hidden;border:1px solid rgb(207, 207, 207)"><pre class="CodeMirror cm-s-default  CodeMirror-wrap" style="width:100%;overflow-x:auto;line-height:normal;height:auto;font-size:inherit;margin-bottom:0;padding:10px;white-space:pre-wrap;word-wrap:break-word;word-break:normal;border:0;background:white"><div style="margin-left:0"><span class="cm-variable">sorted_life_exp_2018</span><span> </span><span>=</span><span> </span><span class="cm-builtin">sorted</span><span>(</span><span class="cm-variable">life_exp_2018</span><span>,</span><span> </span><span class="cm-variable">reverse</span><span> </span><span>=</span><span> </span><span class="cm-keyword">True</span><span>)</span><span>
+</span><span class="cm-variable">tenth_life</span><span> </span><span>=</span><span> </span><span class="cm-variable">sorted_life_exp_2018</span><span>[</span><span class="cm-number">9</span><span>]</span><span>
+</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;Countries with the Highest Life Expectancy in 2018&#x27;</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;------------------------------------------------------&#x27;</span><span>)</span><span>
+</span><span>
+</span><span>
+</span><span class="cm-keyword">for</span><span> </span><span class="cm-variable">j</span><span> </span><span class="cm-keyword">in</span><span> </span><span class="cm-builtin">range</span><span>(</span><span class="cm-builtin">len</span><span>(</span><span class="cm-variable">country_2018</span><span>)</span><span>)</span><span>:</span><span>
+</span><span>    </span><span class="cm-keyword">if</span><span> </span><span class="cm-variable">life_exp_2018</span><span>[</span><span class="cm-variable">j</span><span>]</span><span> </span><span class="cm-operator">&gt;=</span><span> </span><span class="cm-variable">tenth_life</span><span>:</span><span>
+</span><span>        </span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;The life expectancy of {country_2018[j]} was {life_exp_2018[j]}.&#x27;</span><span>)</span><span>
+</span></div></pre></div></div></div><div style="display:flex;flex-direction:row;align-items:stretch" cocalc-test="cell-output"><button type="button" class="ant-btn css-dev-only-do-not-override-byeoj0 ant-btn-text" style="border-color:transparent;font-size:inherit;padding:0;display:flex;flex-direction:column;height:auto;cursor:pointer"><span style="margin-left:0" class="hidden-xs"><div style="color:#D84315;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;padding-bottom:2px">Out[<!-- -->22<!-- -->]:</div></span><div style="flex:1"></div><span> </span></button><div style="flex:1;overflow-x:auto;line-height:normal;background-color:#fff;border:0;margin-bottom:0;margin-left:1px" class="cocalc-jupyter-rendered"><div style="white-space:pre-wrap;word-wrap:break-word;font-family:monospace;padding-top:5px;padding-bottom:5px"><span>Countries with the Highest Life Expectancy in 2018
+------------------------------------------------------
+The life expectancy of Australia was 82.9.
+The life expectancy of France was 82.6.
+The life expectancy of Iceland was 82.6.
+The life expectancy of Israel was 82.4.
+The life expectancy of Italy was 82.6.
+The life expectancy of Japan was 84.2.
+The life expectancy of Luxembourg was 82.4.
+The life expectancy of Norway was 82.4.
+The life expectancy of Singapore was 84.0.
+The life expectancy of Spain was 83.2.
+The life expectancy of Sweden was 82.4.
+The life expectancy of Switzerland was 83.5.
+</span></div></div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><span style="margin-left:0" class="hidden-xs"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px">In [<!-- -->24<!-- -->]:</div></span><div style="overflow:hidden;flex:1"><div style="width:100%;border-radius:5px;position:relative;overflow-x:hidden;border:1px solid rgb(207, 207, 207)"><pre class="CodeMirror cm-s-default  CodeMirror-wrap" style="width:100%;overflow-x:auto;line-height:normal;height:auto;font-size:inherit;margin-bottom:0;padding:10px;white-space:pre-wrap;word-wrap:break-word;word-break:normal;border:0;background:white"><div style="margin-left:0"><span class="cm-variable">tenth_low_life</span><span> </span><span>=</span><span> </span><span class="cm-variable">sorted_life_exp_2018</span><span>[</span><span class="cm-operator">-</span><span class="cm-number">10</span><span>]</span><span>
+</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;Countries with the Lowest Life Expectancy in 2018&#x27;</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;------------------------------------------------------&#x27;</span><span>)</span><span>
+</span><span>
+</span><span>
+</span><span class="cm-keyword">for</span><span> </span><span class="cm-variable">j</span><span> </span><span class="cm-keyword">in</span><span> </span><span class="cm-builtin">range</span><span>(</span><span class="cm-builtin">len</span><span>(</span><span class="cm-variable">country_2018</span><span>)</span><span>)</span><span>:</span><span class="cm-variable">j</span><span>
+</span><span>    </span><span class="cm-keyword">if</span><span> </span><span class="cm-variable">life_exp_2018</span><span>[</span><span class="cm-variable">j</span><span>]</span><span> </span><span class="cm-operator">&lt;=</span><span> </span><span class="cm-variable">tenth_low_life</span><span>:</span><span>
+</span><span>        </span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;The life expectancy of {country_2018[j]} was {life_exp_2018[j]}.&#x27;</span><span>)</span><span>
+</span></div></pre></div></div></div><div style="display:flex;flex-direction:row;align-items:stretch" cocalc-test="cell-output"><button type="button" class="ant-btn css-dev-only-do-not-override-byeoj0 ant-btn-text" style="border-color:transparent;font-size:inherit;padding:0;display:flex;flex-direction:column;height:auto;cursor:pointer"><span style="margin-left:0" class="hidden-xs"><div style="color:#D84315;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;padding-bottom:2px">Out[<!-- -->24<!-- -->]:</div></span><div style="flex:1"></div><span> </span></button><div style="flex:1;overflow-x:auto;line-height:normal;background-color:#fff;border:0;margin-bottom:0;margin-left:1px" class="cocalc-jupyter-rendered"><div style="white-space:pre-wrap;word-wrap:break-word;font-family:monospace;padding-top:5px;padding-bottom:5px"><span>Countries with the Lowest Life Expectancy in 2018
+------------------------------------------------------
+The life expectancy of Afghanistan was 58.7.
+The life expectancy of Central African Republic was 51.6.
+The life expectancy of Chad was 60.5.
+The life expectancy of Guinea-Bissau was 59.7.
+The life expectancy of Lesotho was 51.1.
+The life expectancy of Sierra Leone was 60.0.
+The life expectancy of Somalia was 58.0.
+The life expectancy of Swaziland was 58.6.
+The life expectancy of Zambia was 59.5.
+The life expectancy of Zimbabwe was 60.2.
+</span></div></div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px"></div><div style="width:100%"><h1 id="part-5-calculating-gdp-by-country"><span>Part 5: Calculating GDP by Country</span></h1><p><span style="text-indent:0"><span>The following will create a list that contains the GDP for each country as well as the entire world in 2018.</span></span></p></div></div><div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><span style="margin-left:0" class="hidden-xs"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px">In [<!-- -->26<!-- -->]:</div></span><div style="overflow:hidden;flex:1"><div style="width:100%;border-radius:5px;position:relative;overflow-x:hidden;border:1px solid rgb(207, 207, 207)"><pre class="CodeMirror cm-s-default  CodeMirror-wrap" style="width:100%;overflow-x:auto;line-height:normal;height:auto;font-size:inherit;margin-bottom:0;padding:10px;white-space:pre-wrap;word-wrap:break-word;word-break:normal;border:0;background:white"><div style="margin-left:0"><span class="cm-variable">gdp_2018</span><span> </span><span>=</span><span> </span><span>[</span><span>]</span><span>
+</span><span>
+</span><span class="cm-keyword">for</span><span> </span><span class="cm-variable">j</span><span> </span><span class="cm-keyword">in</span><span> </span><span class="cm-builtin">range</span><span>(</span><span class="cm-builtin">len</span><span>(</span><span class="cm-variable">country_2018</span><span>)</span><span>)</span><span>:</span><span>
+</span><span>    </span><span class="cm-variable">gdp_2018</span><span>.</span><span class="cm-variable">append</span><span>(</span><span class="cm-variable">pcgdp_2018</span><span>[</span><span class="cm-variable">j</span><span>]</span><span> </span><span class="cm-operator">*</span><span> </span><span class="cm-variable">population_2018</span><span>[</span><span class="cm-variable">j</span><span>]</span><span>)</span><span>
+</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;The total global GDP in 2018 was ${sum(gdp_2018)}.&#x27;</span><span>)</span><span>
+</span></div></pre></div></div></div><div style="display:flex;flex-direction:row;align-items:stretch" cocalc-test="cell-output"><button type="button" class="ant-btn css-dev-only-do-not-override-byeoj0 ant-btn-text" style="border-color:transparent;font-size:inherit;padding:0;display:flex;flex-direction:column;height:auto;cursor:pointer"><span style="margin-left:0" class="hidden-xs"><div style="color:#D84315;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;padding-bottom:2px">Out[<!-- -->26<!-- -->]:</div></span><div style="flex:1"></div><span> </span></button><div style="flex:1;overflow-x:auto;line-height:normal;background-color:#fff;border:0;margin-bottom:0;margin-left:1px" class="cocalc-jupyter-rendered"><div style="white-space:pre-wrap;word-wrap:break-word;font-family:monospace;padding-top:5px;padding-bottom:5px"><span>The total global GDP in 2018 was $118225647770000.
+</span></div></div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><span style="margin-left:0" class="hidden-xs"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px">In [<!-- -->30<!-- -->]:</div></span><div style="overflow:hidden;flex:1"><div style="width:100%;border-radius:5px;position:relative;overflow-x:hidden;border:1px solid rgb(207, 207, 207)"><pre class="CodeMirror cm-s-default  CodeMirror-wrap" style="width:100%;overflow-x:auto;line-height:normal;height:auto;font-size:inherit;margin-bottom:0;padding:10px;white-space:pre-wrap;word-wrap:break-word;word-break:normal;border:0;background:white"><div style="margin-left:0"><span class="cm-variable">min_gdp</span><span> </span><span>=</span><span> </span><span class="cm-builtin">min</span><span>(</span><span class="cm-variable">gdp_2018</span><span>)</span><span>
+</span><span class="cm-variable">max_gdp</span><span> </span><span>=</span><span> </span><span class="cm-builtin">max</span><span>(</span><span class="cm-variable">gdp_2018</span><span>)</span><span>
+</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;The country with the highest GDP in 2018 was {country_2018[gdp_2018.index(max_gdp)]} with a GDP of {max_gdp}.&#x27;</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;The country with the lowest GDP in 2018 was {country_2018[gdp_2018.index(min_gdp)]} with a GDP of {min_gdp}.&#x27;</span><span>)</span><span>
+</span></div></pre></div></div></div><div style="display:flex;flex-direction:row;align-items:stretch" cocalc-test="cell-output"><button type="button" class="ant-btn css-dev-only-do-not-override-byeoj0 ant-btn-text" style="border-color:transparent;font-size:inherit;padding:0;display:flex;flex-direction:column;height:auto;cursor:pointer"><span style="margin-left:0" class="hidden-xs"><div style="color:#D84315;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;padding-bottom:2px">Out[<!-- -->30<!-- -->]:</div></span><div style="flex:1"></div><span> </span></button><div style="flex:1;overflow-x:auto;line-height:normal;background-color:#fff;border:0;margin-bottom:0;margin-left:1px" class="cocalc-jupyter-rendered"><div style="white-space:pre-wrap;word-wrap:break-word;font-family:monospace;padding-top:5px;padding-bottom:5px"><span>The country with the highest GDP in 2018 was China with a GDP of 22720000000000.
+The country with the lowest GDP in 2018 was Kiribati with a GDP of 223020000.
+</span></div></div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px"></div><div style="width:100%"><h1 id="part-6-grouping-by-continent"><span>Part 6: Grouping by Continent</span></h1><p><span style="text-indent:0"><span>The following will create a chart with the calculated data of the total population, per capita GDP, and life expenctancy of four continental regions: africa, america, asia and europe. </span></span></p></div></div><div></div></div><div style="margin-bottom:10px"><div style="display:flex;flex-direction:row;align-items:stretch"><span style="margin-left:0" class="hidden-xs"><div style="color:#303F9F;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;margin-top:2.5px">In [<!-- -->66<!-- -->]:</div></span><div style="overflow:hidden;flex:1"><div style="width:100%;border-radius:5px;position:relative;overflow-x:hidden;border:1px solid rgb(207, 207, 207)"><pre class="CodeMirror cm-s-default  CodeMirror-wrap" style="width:100%;overflow-x:auto;line-height:normal;height:auto;font-size:inherit;margin-bottom:0;padding:10px;white-space:pre-wrap;word-wrap:break-word;word-break:normal;border:0;background:white"><div style="margin-left:0"><span class="cm-variable">continent_names</span><span> </span><span>=</span><span> </span><span>[</span><span class="cm-string">&#x27;africa&#x27;</span><span>,</span><span> </span><span class="cm-string">&#x27;americas&#x27;</span><span>,</span><span> </span><span class="cm-string">&#x27;asia&#x27;</span><span>,</span><span> </span><span class="cm-string">&#x27;europe&#x27;</span><span>]</span><span>
+</span><span class="cm-variable">pcgdp_2018_by_continent</span><span> </span><span>=</span><span> </span><span>[</span><span>]</span><span>
+</span><span class="cm-variable">pop_2018_by_continent</span><span> </span><span>=</span><span> </span><span>[</span><span>]</span><span>
+</span><span class="cm-variable">life_exp_2018_by_continent</span><span> </span><span>=</span><span> </span><span>[</span><span>]</span><span>
+</span><span>
+</span><span class="cm-keyword">for</span><span> </span><span class="cm-variable">j</span><span> </span><span class="cm-keyword">in</span><span> </span><span class="cm-builtin">range</span><span>(</span><span class="cm-builtin">len</span><span>(</span><span class="cm-variable">continent_names</span><span>)</span><span>)</span><span>:</span><span>
+</span><span>    </span><span class="cm-variable">temp_life_exp</span><span> </span><span>=</span><span> </span><span class="cm-number">0</span><span>
+</span><span>    </span><span class="cm-variable">temp_pop</span><span> </span><span>=</span><span> </span><span class="cm-number">0</span><span>
+</span><span>    </span><span class="cm-variable">temp_gdp</span><span> </span><span>=</span><span> </span><span class="cm-number">0</span><span>
+</span><span>    </span><span class="cm-keyword">for</span><span> </span><span class="cm-variable">i</span><span> </span><span class="cm-keyword">in</span><span> </span><span class="cm-builtin">range</span><span>(</span><span class="cm-builtin">len</span><span>(</span><span class="cm-variable">country_2018</span><span>)</span><span>)</span><span>:</span><span>
+</span><span>        </span><span class="cm-keyword">if</span><span> </span><span class="cm-variable">continent_names</span><span>[</span><span class="cm-variable">j</span><span>]</span><span> </span><span class="cm-operator">==</span><span> </span><span class="cm-variable">continent_2018</span><span>[</span><span class="cm-variable">i</span><span>]</span><span>:</span><span>
+</span><span>            </span><span class="cm-variable">temp_life_exp</span><span> </span><span>+=</span><span> </span><span class="cm-variable">life_exp_2018</span><span>[</span><span class="cm-variable">i</span><span>]</span><span> </span><span class="cm-operator">*</span><span> </span><span class="cm-variable">population_2018</span><span>[</span><span class="cm-variable">i</span><span>]</span><span>
+</span><span>            </span><span class="cm-variable">temp_pop</span><span> </span><span>+=</span><span> </span><span class="cm-variable">population_2018</span><span>[</span><span class="cm-variable">i</span><span>]</span><span>
+</span><span>            </span><span class="cm-variable">temp_gdp</span><span> </span><span>+=</span><span> </span><span class="cm-variable">gdp_2018</span><span>[</span><span class="cm-variable">i</span><span>]</span><span> </span><span>
+</span><span>    </span><span class="cm-variable">temp_life_exp</span><span> </span><span>=</span><span> </span><span class="cm-variable">temp_life_exp</span><span> </span><span class="cm-operator">/</span><span> </span><span class="cm-variable">temp_pop</span><span>
+</span><span>    </span><span class="cm-variable">temp_gdp</span><span> </span><span>=</span><span> </span><span class="cm-variable">temp_gdp</span><span> </span><span class="cm-operator">/</span><span> </span><span class="cm-variable">temp_pop</span><span>
+</span><span>    </span><span class="cm-variable">pcgdp_2018_by_continent</span><span>.</span><span class="cm-variable">append</span><span>(</span><span class="cm-builtin">round</span><span>(</span><span class="cm-variable">temp_gdp</span><span>)</span><span>)</span><span>
+</span><span>    </span><span class="cm-variable">pop_2018_by_continent</span><span>.</span><span class="cm-variable">append</span><span>(</span><span class="cm-variable">temp_pop</span><span>)</span><span>
+</span><span>    </span><span class="cm-variable">life_exp_2018_by_continent</span><span>.</span><span class="cm-variable">append</span><span>(</span><span class="cm-builtin">round</span><span>(</span><span class="cm-variable">temp_life_exp</span><span>,</span><span> </span><span class="cm-number">1</span><span>)</span><span>)</span><span>
+</span><span>    </span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;Continent    Population      pcGDP    Life Exp&#x27;</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;----------------------------------------------&#x27;</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;{continent_names[0].title():&lt;11}{pop_2018_by_continent[0]:&gt;12}{pcgdp_2018_by_continent[0]:&gt;11}{life_exp_2018_by_continent[0]:&gt;12}&#x27;</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;{continent_names[1].title():&lt;11}{pop_2018_by_continent[1]:&gt;12}{pcgdp_2018_by_continent[1]:&gt;11}{life_exp_2018_by_continent[1]:&gt;12}&#x27;</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;{continent_names[2].title():&lt;11}{pop_2018_by_continent[2]:&gt;12}{pcgdp_2018_by_continent[2]:&gt;11}{life_exp_2018_by_continent[2]:&gt;12}&#x27;</span><span>)</span><span>
+</span><span class="cm-builtin">print</span><span>(</span><span class="cm-variable">f</span><span class="cm-string">&#x27;{continent_names[3].title():&lt;11}{pop_2018_by_continent[3]:&gt;12}{pcgdp_2018_by_continent[3]:&gt;11}{life_exp_2018_by_continent[3]:&gt;12}&#x27;</span><span>)</span><span>
+</span></div></pre></div></div></div><div style="display:flex;flex-direction:row;align-items:stretch" cocalc-test="cell-output"><button type="button" class="ant-btn css-dev-only-do-not-override-byeoj0 ant-btn-text" style="border-color:transparent;font-size:inherit;padding:0;display:flex;flex-direction:column;height:auto;cursor:pointer"><span style="margin-left:0" class="hidden-xs"><div style="color:#D84315;min-width:7em;font-family:monospace;text-align:right;padding-right:5px;padding-bottom:2px">Out[<!-- -->66<!-- -->]:</div></span><div style="flex:1"></div><span> </span></button><div style="flex:1;overflow-x:auto;line-height:normal;background-color:#fff;border:0;margin-bottom:0;margin-left:1px" class="cocalc-jupyter-rendered"><div style="white-space:pre-wrap;word-wrap:break-word;font-family:monospace;padding-top:5px;padding-bottom:5px"><span>Continent    Population      pcGDP    Life Exp
+----------------------------------------------
+Africa       1287150200       4700        65.9
+Americas     1010978000      28708        77.5
+Asia         4455113000      12705        73.2
+Europe        841959000      31534        78.4
+</span></div></div></div></div></div></div>
+</body>
